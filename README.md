@@ -24,3 +24,13 @@ wget https://github.com/youyo/gaws/releases/latest/download/gaws_darwin_amd64.zi
 ```
 wget https://github.com/youyo/gaws/releases/latest/download/gaws_linux_amd64.tar.gz
 ```
+
+## Enabling shell autocompletion
+
+### Using zsh
+
+Write to your .zshrc file.
+
+```
+source <(gaws completion zsh)
+```
