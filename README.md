@@ -1,5 +1,7 @@
 # gaws
 
+[![CircleCI](https://circleci.com/gh/youyo/gaws.svg?style=svg)](https://circleci.com/gh/youyo/gaws)
+
 gaws is a command to complement aws-cli.
 
 ## Install
