@@ -18,8 +18,7 @@ test:
 
 ## Execute `go run`
 run:
-	go run \
-		$(Name)/main.go ${OPTION}
+	go run main.go ${OPTION}
 
 ## Vendoring
 vendoring:
