@@ -31,7 +31,6 @@ import (
 )
 
 var (
-	secretsmanagerImportCmdFlagsId           string
 	secretsmanagerImportCmdFlagsSecureString string
 )
 
@@ -48,7 +47,7 @@ var secretsmanagerImportCmd = &cobra.Command{
 		)
 		svc := secretsmanager.New(sess)
 		putSecretValueInput := &secretsmanager.PutSecretValueInput{
-			SecretId:     aws.String(secretsmanagerImportCmdFlagsId),
+			SecretId:     aws.String(secretsmanagerCmdFlagsId),
 			SecretString: aws.String(secretsmanagerImportCmdFlagsSecureString),
 		}
 		if _, err := svc.PutSecretValue(putSecretValueInput); err != nil {
@@ -62,8 +61,6 @@ var secretsmanagerImportCmd = &cobra.Command{
 
 func init() {
 	secretsmanagerCmd.AddCommand(secretsmanagerImportCmd)
-	secretsmanagerImportCmd.Flags().StringVarP(&secretsmanagerImportCmdFlagsId, "secret-id", "s", "", "secret-id")
 	secretsmanagerImportCmd.Flags().StringVarP(&secretsmanagerImportCmdFlagsSecureString, "secure-string", "S", "", "secure-string (json format)")
-	secretsmanagerImportCmd.MarkFlagRequired("secret-id")
 	secretsmanagerImportCmd.MarkFlagRequired("secure-string")
 }

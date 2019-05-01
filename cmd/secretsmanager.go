@@ -24,10 +24,15 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var secretsmanagerCmd = &cobra.Command{
-	Use: "secretsmanager",
-}
+var (
+	secretsmanagerCmd = &cobra.Command{
+		Use: "secretsmanager",
+	}
+	secretsmanagerCmdFlagsId string
+)
 
 func init() {
 	rootCmd.AddCommand(secretsmanagerCmd)
+	secretsmanagerCmd.PersistentFlags().StringVarP(&secretsmanagerCmdFlagsId, "secret-id", "s", "", "secret-id")
+	secretsmanagerCmd.MarkFlagRequired("secret-id")
 }

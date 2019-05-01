@@ -30,10 +30,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var (
-	secretsmanagerExportCmdFlagsId string
-)
-
 var secretsmanagerExportCmd = &cobra.Command{
 	Use:   "export",
 	Short: "Export secure string",
@@ -47,7 +43,7 @@ var secretsmanagerExportCmd = &cobra.Command{
 		)
 		svc := secretsmanager.New(sess)
 		input := &secretsmanager.GetSecretValueInput{
-			SecretId: aws.String(secretsmanagerExportCmdFlagsId),
+			SecretId: aws.String(secretsmanagerCmdFlagsId),
 		}
 		result, err := svc.GetSecretValue(input)
 		if err != nil {
@@ -60,6 +56,4 @@ var secretsmanagerExportCmd = &cobra.Command{
 
 func init() {
 	secretsmanagerCmd.AddCommand(secretsmanagerExportCmd)
-	secretsmanagerExportCmd.Flags().StringVarP(&secretsmanagerExportCmdFlagsId, "secret-id", "s", "", "secret-id")
-	secretsmanagerExportCmd.MarkFlagRequired("secret-id")
 }

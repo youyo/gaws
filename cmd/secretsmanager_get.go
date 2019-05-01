@@ -34,6 +34,4 @@ var secretsmanagerGetCmd = &cobra.Command{
 
 func init() {
 	secretsmanagerCmd.AddCommand(secretsmanagerGetCmd)
-	secretsmanagerGetCmd.Flags().StringVarP(&secretsmanagerExportCmdFlagsId, "secret-id", "s", "", "secret-id")
-	secretsmanagerGetCmd.MarkFlagRequired("secret-id")
 }
